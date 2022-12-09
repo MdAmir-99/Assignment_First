@@ -14,6 +14,7 @@ dotenv.config({
 })
 
 app.use(express.json()); 
+app.use(express.urlencoded({extended : true}))
 app.use(multer().any());
 app.use(cors());
 
@@ -26,5 +27,5 @@ mongoose.connect(process.env.DB_CON, { useNewUrlParser: true})
 app.use('/', route);
 
 app.listen(port, function () {
-    console.log('Express app running on port 🎧 ' + (process.env.PORT))
+    console.log('Express app running on port 🎧 ' + port)
 });
